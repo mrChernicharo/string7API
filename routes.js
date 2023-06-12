@@ -3,9 +3,10 @@ import postgres from "postgres";
 import { ENV } from "./envConfig.js";
 
 const routes = Router();
+let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = ENV.PGHOST ? ENV : process.env;
 
 
-const URL = `postgres://${ENV.PGUSER}:${ENV.PGPASSWORD}@${ENV.PGHOST}/${ENV.PGDATABASE}?options=project%3D${ENV.ENDPOINT_ID}`;
+const URL = `postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}/${PGDATABASE}?options=project%3D${ENDPOINT_ID}`;
 const sql = postgres(URL, { ssl: "require" });
 
 
