@@ -11,6 +11,5 @@ const env = process.env.NODE_ENV || "development";
 const { PORT } = process.env;
 
 app.listen({ host: "0.0.0.0", port: Number(PORT) || 3333 }, () => {
-  console.log(process.env);
   console.log(`server listening on port ${PORT}:: ${env} environment`);
 });
