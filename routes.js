@@ -1,8 +1,9 @@
 import { Router } from "express";
 import postgres from "postgres";
+import { ENV } from "./envConfig.js";
 
 const routes = Router();
-const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = process.env;
+const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, ENDPOINT_ID } = ENV;
 
 const URL = `postgres://${PGUSER}:${PGPASSWORD}@${PGHOST}/${PGDATABASE}?options=project%3D${ENDPOINT_ID}`;
 const sql = postgres(URL, { ssl: "require" });
